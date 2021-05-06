@@ -1,7 +1,7 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2021-05-04T00:08:07.277944+00:00",
-  "repo": "jyasskin/wpack-bundled-responses",
+  "timestamp": "2021-05-06T01:02:28.755241+00:00",
+  "repo": "wpack-wg/bundled-responses",
   "labels": [
     {
       "name": "bug",
@@ -49,6 +49,23 @@
       "color": "ffffff"
     }
   ],
-  "issues": [],
+  "issues": [
+    {
+      "number": 1,
+      "id": "MDU6SXNzdWU4NzY5NzIwNzg=",
+      "title": "Is \"responses\" the right goal?",
+      "url": "https://github.com/wpack-wg/bundled-responses/issues/1",
+      "state": "OPEN",
+      "author": "martinthomson",
+      "authorAssociation": "NONE",
+      "assignees": [],
+      "labels": [],
+      "body": "First!\r\n\r\nThe original design here was framed as a response to some HTTP request.  But I realize that the design and thinking has moved on somewhat since then.  Treating this as a bundle of resources with metadata is both easier to reason about and less likely to trip into awkward problems (such as how this might interact with the HTTP protocol).",
+      "createdAt": "2021-05-06T00:45:04Z",
+      "updatedAt": "2021-05-06T00:45:04Z",
+      "closedAt": null,
+      "comments": []
+    }
+  ],
   "pulls": []
 }
