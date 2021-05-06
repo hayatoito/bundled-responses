@@ -4,8 +4,8 @@
 
 Network Working Group                                         J. Yasskin
 Internet-Draft                                                    Google
-Intended status: Standards Track                           22 April 2021
-Expires: 24 October 2021
+Intended status: Standards Track                              6 May 2021
+Expires: 7 November 2021
 
 
                               Web Bundles
@@ -29,7 +29,7 @@ Discussion Venues
    https://mailarchive.ietf.org/arch/browse/wpack/.
 
    Source for this draft and an issue tracker can be found at
-   https://github.com/jyasskin/wpack-bundled-responses.
+   https://github.com/wpack-wg/bundled-responses.
 
 Status of This Memo
 
@@ -46,7 +46,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 24 October 2021.
+   This Internet-Draft will expire on 7 November 2021.
 
 Copyright Notice
 
@@ -641,7 +641,7 @@ Table of Contents
               June 2019,
               <https://datatracker.ietf.org/doc/html/rfc8610>.
 
-   [FETCH]    WHATWG, "Fetch", April 2021,
+   [FETCH]    WHATWG, "Fetch", May 2021,
               <https://fetch.spec.whatwg.org/>.
 
    [I-D.ietf-httpbis-semantics]
@@ -661,7 +661,7 @@ Table of Contents
               IANA, "Media Types",
               <http://www.iana.org/assignments/media-types>.
 
-   [INFRA]    WHATWG, "Infra", April 2021,
+   [INFRA]    WHATWG, "Infra", May 2021,
               <https://infra.spec.whatwg.org/>.
 
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
@@ -683,7 +683,7 @@ Table of Contents
               2119 Key Words", BCP 14, RFC 8174, DOI 10.17487/RFC8174,
               May 2017, <https://datatracker.ietf.org/doc/html/rfc8174>.
 
-   [URL]      WHATWG, "URL", April 2021, <https://url.spec.whatwg.org/>.
+   [URL]      WHATWG, "URL", May 2021, <https://url.spec.whatwg.org/>.
 
 7.2.  Informative References
 
