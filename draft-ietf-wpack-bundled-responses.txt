@@ -4,8 +4,8 @@
 
 Network Working Group                                         J. Yasskin
 Internet-Draft                                                    Google
-Intended status: Standards Track                              6 May 2021
-Expires: 7 November 2021
+Intended status: Standards Track                              7 May 2021
+Expires: 8 November 2021
 
 
                               Web Bundles
@@ -46,7 +46,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 7 November 2021.
+   This Internet-Draft will expire on 8 November 2021.
 
 Copyright Notice
 
@@ -115,9 +115,9 @@ Table of Contents
 
 2.  Semantics
 
-   A bundle is logically a set of HTTP representations (Section 7 of
+   A bundle is logically a set of HTTP representations (Section 3.2 of
    [I-D.ietf-httpbis-semantics]), themselves represented by HTTP
-   response messages (Section 2.1 of [I-D.ietf-httpbis-semantics]).  The
+   response messages (Section 3.4 of [I-D.ietf-httpbis-semantics]).  The
    bundle can include an optional URL identifying the primary resource
    within the bundle and can include other optional metadata.
    Particular applications can require that the primary URL and/or other
@@ -140,7 +140,7 @@ Table of Contents
 2.2.  Naming a representation
 
    Representations within a bundle are named by their "Content-Location"
-   (Section 7.8 of [I-D.ietf-httpbis-semantics]), which holds a URL.
+   (Section 8.7 of [I-D.ietf-httpbis-semantics]), which holds a URL.
    This is also known as the representation's URL.
 
    Multiple representations within a bundle can have the same URL, in
@@ -430,7 +430,7 @@ Table of Contents
    headers.
 
    If a response's payload is not empty, its headers MUST include a
-   "Content-Type" header (Section 7.4 of [I-D.ietf-httpbis-semantics]).
+   "Content-Type" header (Section 8.3 of [I-D.ietf-httpbis-semantics]).
    The client MUST interpret the following payload as this specified
    media type instead of trying to sniff a media type from the bytes of
    the payload, for example by appending an artificial "X-Content-Type-
