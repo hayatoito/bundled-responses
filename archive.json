@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2021-05-06T01:02:28.755241+00:00",
+  "timestamp": "2021-05-09T01:08:33.361605+00:00",
   "repo": "wpack-wg/bundled-responses",
   "labels": [
     {
@@ -62,7 +62,38 @@
       "labels": [],
       "body": "First!\r\n\r\nThe original design here was framed as a response to some HTTP request.  But I realize that the design and thinking has moved on somewhat since then.  Treating this as a bundle of resources with metadata is both easier to reason about and less likely to trip into awkward problems (such as how this might interact with the HTTP protocol).",
       "createdAt": "2021-05-06T00:45:04Z",
-      "updatedAt": "2021-05-06T00:45:04Z",
+      "updatedAt": "2021-05-07T00:25:14Z",
+      "closedAt": null,
+      "comments": [
+        {
+          "author": "jyasskin",
+          "authorAssociation": "COLLABORATOR",
+          "body": "To digress about the history:\r\n 1. The original design in [draft-yasskin-dispatch-web-packaging](https://datatracker.ietf.org/doc/html/draft-yasskin-dispatch-web-packaging-00#section-2.3) was around capturing a set of request/response pairs, on the theory that requests were the way to capture content negotiation. That turned out to be wrong: HTTP/2 PUSH never documented a design for how the PUSH_PROMISE's requests would match against the UA's requests.\r\n 2. So I shifted to a second design in [draft-yasskin-wpack-bundled-exchanges-01](https://datatracker.ietf.org/doc/html/draft-yasskin-wpack-bundled-exchanges-01#section-2.2) of bundling (URL, content-negotiation, response) triples, with the content negotiation represented using the `Variants` response header. But responses can already hold their URL in the `Content-Location` response header, and `Variants` is already a response header, which led me to rethink what it was we're actually storing.\r\n 3. So in [draft-yasskin-wpack-bundled-exchanges-04](https://datatracker.ietf.org/doc/html/draft-yasskin-wpack-bundled-exchanges-04#section-2), I defined the things in a bundle as \"HTTP representations, themselves represented by HTTP response messages\". 3 of the response headers get split out into discontiguous locations in the format (`Content-Location` becomes the key of the index map, `Variants` heads each value in the index map, and `Variant-Key` is implied by the order of the offset pairs in the value), but they're still logically response headers.\r\n\r\nWhy [\"representations\"](https://www.ietf.org/archive/id/draft-ietf-httpbis-semantics-15.html#name-representations) and not [\"resources\"](https://www.ietf.org/archive/id/draft-ietf-httpbis-semantics-15.html#name-resources)? HTTP defines resources as a very abstract concept. They're the abstract idea named by a URI (e.g. \"the current weather in Laguna Beach\"), rather than any particular serialization into bytes. Since bundles hold byte sequences, they can't really hold resources, but they can hold representations.\r\n\r\nGiven all that ... what kind of change are you looking for here?",
+          "createdAt": "2021-05-07T00:06:14Z",
+          "updatedAt": "2021-05-07T00:06:14Z"
+        },
+        {
+          "author": "martinthomson",
+          "authorAssociation": "NONE",
+          "body": "That matches my recollection of the history also.\r\n\r\nIt's just the naming.\r\n\r\nSaying \"resources\" is OK provided that there is no risk of being confused by the HTTP concept.  A resource as exposed by HTTP is a rich and abstract thing that can do things, including produce representations.  Here, the resource is far less capable, but it is still potentially also a resource.  To that end, the distinction between a resource and its representation -- what motivates us to use the term \"representation\" at all -- is not important.\r\n\r\nIf we are no longer dependent on this being a representation of an HTTP resource, calling these representations implies the existence of some abstract resource that cannot be interacted with.  The resource/representation split only invokes Plato's cave in what is a truly futile fashion.\r\n\r\nThat is to say, without any pretension, that this is a bag of bags of bits, with the metadata that allows computers to make sense of those bits.",
+          "createdAt": "2021-05-07T00:25:14Z",
+          "updatedAt": "2021-05-07T00:25:14Z"
+        }
+      ]
+    },
+    {
+      "number": 2,
+      "id": "MDU6SXNzdWU4NzgyMTc5MzY=",
+      "title": "Consider removing content negotiation",
+      "url": "https://github.com/wpack-wg/bundled-responses/issues/2",
+      "state": "OPEN",
+      "author": "jyasskin",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Moved from @littledan's https://github.com/WICG/webpackage/issues/612:\r\n\r\nIt's more efficient to use content negotiation to select which bundle to serve, rather than including several variants of a resource inside a bundle. Even most use cases around re-sharing bundles while offline can get away with including a single least-common-denominator resource. I only know of the case of **translations** that concretely need several variants of the same resource.\r\n\r\nCan we simplify the design by omitting content negotiation? We'd lose some fidelity in representing HTTP, but that might be acceptable.",
+      "createdAt": "2021-05-07T00:00:09Z",
+      "updatedAt": "2021-05-07T00:00:09Z",
       "closedAt": null,
       "comments": []
     }
